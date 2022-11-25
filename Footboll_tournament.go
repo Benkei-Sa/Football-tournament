@@ -3,7 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"io"
+    "io"
 	"log"
 	"os"
 	"sort"
@@ -31,7 +31,9 @@ type team byte
 // например, строке BAW соответствует
 // first=B, second=A, result=W
 type match struct {
-	// ...
+	first team
+	second team
+	result result
 }
 
 // rating представляет турнирный рейтинг команд -
@@ -43,7 +45,7 @@ type tournament []match
 
 // calcRating считает и возвращает рейтинг турнира
 func (trn *tournament) calcRating() rating {
-	// ...
+	*trn = 
 }
 
 // ┌─────────────────────────────────┐
