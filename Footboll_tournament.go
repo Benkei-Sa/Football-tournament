@@ -3,7 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
-    "io"
+	"io"
 	"log"
 	"os"
 	"sort"
@@ -31,7 +31,7 @@ type team byte
 // например, строке BAW соответствует
 // first=B, second=A, result=W
 type match struct {
-	first team
+	first  team
 	second team
 	result result
 }
@@ -45,7 +45,21 @@ type tournament []match
 
 // calcRating считает и возвращает рейтинг турнира
 func (trn *tournament) calcRating() rating {
-	*trn = 
+	var rating = make(map[team]int)
+	for _, match := range *trn {
+		switch match.result {
+		case win:
+			rating[match.first] += 3
+			rating[match.second] += 0
+		case draw:
+			rating[match.first] += 1
+			rating[match.second] += 1
+		case loss:
+			rating[match.first] += 0
+			rating[match.second] += 3
+		}
+	}
+	return rating
 }
 
 // ┌─────────────────────────────────┐
